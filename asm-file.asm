@@ -2,7 +2,7 @@ INCLUDE Irvine32.inc
 .data
 ;public asmfunc
 
-msg2 db "Sum: ",0
+msg2 db "Sum is :  ",0
 
 
 
