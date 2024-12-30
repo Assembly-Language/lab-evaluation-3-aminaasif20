@@ -19,7 +19,7 @@ int main() {
     int abc;
     printf("assembly proc calling from  from C! \n");
 getch();
-    int array[8] = {-1,-2,-3,1,2,3,4,5};
+    int array[8] = {-1,-2,4,7,-3,1,2,3};
     
     
      asmfunc(array,8); //assembly proc calling
