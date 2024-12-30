@@ -1,27 +1,50 @@
 INCLUDE Irvine32.inc
 .data
-msg1 db "Total odd number value: ",0
+;public asmfunc
+
+msg2 db "Sum: ",0
+
+
+
 
 .code
-asmfunc PROC array:PTR DWORD, length:DWORD, result:PTR DWORD
-    mov eax, 0
-    mov ebx, 0
-    mov esi, array
-    mov ecx, length
+asmfunc PROC array:DWORD , p2:DWORD
+    
+   
+   mov eax,0
+   mov ebx,0
+   mov esi,array
+   mov ecx,p2
+   next:
+   mov eax,[esi]
+   TEST eax,1h
+   jz skip
+   add ebx,eax                 
+                    
+    skip:
+         add esi,4                  ;move to next element
+         loop next                  ;loop until ecx is 0
 
-next:
-    mov eax, [esi]
-    TEST eax, 1
-    jz skip
-    add ebx, eax
+   
 
-skip:
-    add esi, TYPE DWORD
-    LOOP next
 
-    ; Store the result in the memory location pointed to by result
-    mov eax, result
-    mov [eax], ebx
+
+
+
+mov ecx,0
+;total positive numbers value
+mov edx,offset msg2
+call writestring
+call crlf
+mov eax,0
+mov eax,ebx
+call writeint
+call crlf
+
+
+
+
+
 
     ret
 asmfunc ENDP
